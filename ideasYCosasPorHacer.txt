@@ -1,0 +1,13 @@
+*HACER:
+
+
+asignar la funcion de canjear premios cuando se crea dicho boton, no en .ready
+
+-validar que esten completos los input de los modals para que permita guardar los cambios
+
+-poder eliminar premios
+
+* IDEAS:
+
+- Para restar los puntos de los premios, el id del btn canjear
+puede ser igual a los puntos de dicho premio (usar this.id)

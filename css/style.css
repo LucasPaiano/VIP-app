@@ -1,0 +1,302 @@
+/* DATOS VARIOS
+
+Color azul: #337ab7
+
+
+
+*/
+
+/* --- HEADER --- */
+
+
+#ManagerOutTop{
+  background-color: rgba(255, 0, 0, 0.39);
+  color: black;
+}
+
+
+/* --- HEADER --- */
+
+
+/* --- CLIENT --- */
+
+#inputDiv{
+  margin: 50px 0 30px;
+}
+
+#checkboxDiv{
+  margin-bottom: 30px;
+}
+
+
+/* --- /CLIENT --- */
+
+
+/* --- ASK CREATE --- */
+
+#askCreateContainer{
+	background-color: #9D3F3B;
+	border-radius: 5px;
+	margin: 20px 0;
+	padding: 20px 15px;
+	color: white;
+}
+
+#askText{
+	font-size: 17px;
+	font-weight: 600;
+}
+
+#cancelCreate{
+	margin-right: 20px;
+}
+
+/* --- /ASK CREATE --- */
+
+
+/* --- REGISTERED CLIENT SCREEN --- */
+
+#registeredClientScreen{
+	margin-top: 10px;
+}
+
+#clientName{
+	font-size: 35px;
+	font-weight: 700;
+}
+
+#clientBday{
+	font-size: 20px;
+	color: gray;
+}
+
+#currentPoints{
+	font-weight: 700;
+	font-size: 30px;
+}
+
+#textNewBuy{
+	margin: 28px 0 0;
+	font-size: 18px;
+}
+
+#inputNewBuy{
+	margin: 15px 0;
+	border-radius: 5px;
+	width: 90px;
+	height: 35px;
+	font-weight: 700;
+	font-size: 25px;
+	text-align: center;
+}
+
+#okPoints{
+	width: 70px;
+}
+
+#miscClientText{
+	max-width: 70%;
+	margin: 30px auto;
+}
+
+#redeemButton{
+    width: 35%;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#backToMainButton{
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+
+/* --- /REGISTERED CLIENT SCREEN --- */
+
+
+/* --- POINTS ADDED SCREEN --- */
+
+#pointsAddedScreen{
+	border: 1px solid green;
+	border-radius: 5px;
+	background-color: #a7dea7;
+	padding: 20px 0 10px;
+	width: 70%;
+	margin: 60px auto;
+}
+
+#pointsAdeedTxt{
+	font-weight: 700;
+	font-size: 22px;
+	letter-spacing: 1px;
+}
+
+/* --- /POINTS ADDED SCREEN --- */
+
+
+/* --- AWARDS SCREEN --- */
+
+#awardsRow{
+  display: flex;
+  /*justify-content: center;
+  align-items: center;*/
+  flex-wrap: wrap;
+}
+
+.awardBox{
+    background-color: #e8e8e8;
+    margin: 10px auto;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.awardTittle{
+	font-weight: 700;
+    font-size: 35px;
+    letter-spacing: 1px;
+    background-color: #337ab7;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px 5px 0 0;
+}
+
+.awardPointsTxt{
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 1px;
+    margin: 27px 0;
+}
+
+/*.awardPoints{
+	color: green;
+}*/
+
+.awardMiscTxtBox{
+    background-color: #b7b4b4;
+    margin: 10px auto;
+    padding: 9px 1px 2px 2px;
+    width: 100%;
+}
+
+.awardMiscTxt{
+	font-size: 20px;
+}
+
+.awardButton{
+	margin: 10px auto;
+	width: 60%;
+}
+
+.missingPointsBtn{
+  cursor: not-allowed;
+}
+
+.awardEditButton{
+	background-color: black;
+	color: white;
+}
+
+.awardEditButton:hover{
+	background-color: #337ab7;
+	color: black;
+}
+
+.noActive{
+	opacity: 0.6;
+}
+
+/* --- /AWARDS SCREEN --- */
+
+
+/* --- MANAGER PASS SCREEN --- */
+
+
+
+
+
+/* --- MANAGER PASS SCREEN --- */
+
+
+/* --- MODAL CLIENT --- */
+
+.textModalClient{
+	margin: 40px 0 5px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.inputClientModal{
+    border-radius: 5px;
+    padding: 8px 3px;
+    font-size: 21px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.buttonModal{
+	font-weight: 600;
+	font-size: 15px;
+	margin-top: 30px;
+}
+
+#saveClientButton{
+	margin-left: 30px;
+}
+
+
+/* --- /MODAL CLIENT --- */
+
+/*----- MODAL AWARD -----------*/
+
+
+.textModalAward{
+	margin: 40px 0 5px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.inputAwardModal{
+    border-radius: 5px;
+    padding: 8px 3px;
+    font-size: 21px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+#saveAwardButton{
+	margin-left: 30px;
+}
+
+/*----- MODAL AWARD -----------*/
+
+/*----- MODAL EDIT AWARD -----------*/
+
+.inputAwardEditModal{
+    border-radius: 5px;
+    padding: 8px 3px;
+    font-size: 21px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/*----- MODAL EDIT AWARD -----------*/
+/*----- MODAL TUTORIAL -----------*/
+
+#modalTutorial{
+    margin-top: 100px;
+}
+#modalTutorialDiv{
+    margin-top: 80px;
+}
+#modalTutorialCloseBtn{
+    margin-bottom: 30px;
+}
+
+/*----- MODAL TUTORIAL -----------*/

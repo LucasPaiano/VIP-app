@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>V.I.P</title>
+
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+		<link rel="stylesheet" type="text/css" href="./css/ionicons.css">
+
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+		<script src="./js/jquery-1.12.3.min.js"></script>
+
+		<script src="js/jquery-3.1.1.min.js"></script>
+
+		<!-- js-de-bootstrap -->
+		<script src="./js/bootstrap.min.js"></script>
+		<!-- Animate-Scroll -->
+		<script src="./js/jquery.easing.min.js"></script>
+		<script src="./js/script.js"></script>
+
+	</head>
+
+	<body>
+
+		<header class="container">
+
+			<div class="row text-center">
+				<div class="col-xs-12">
+						<h1 id="tittleApp">V.I.P</h1>
+						<p id="subTittle" class="text-muted well text-left">
+							V.I.P es una app <i>-aún en desarrollo-</i> realizada en JS (utilizando la librería JQuery).<br><br>
+							Será una app web autogestionable para el registro de clientes frecuentes, los cuales ganarán puntos con sus compras para luego poder cambiarlos por premios/descuentos/beneficios.<br><br>
+							En principio, me estoy enfocando en la funcionalidad de la misma, luego pasaré a darle estilos. Por eso aún no es muy agradable a la vista.
+						</p>
+				</div>
+				<a href="#modalTutorial" data-toggle="modal">
+					<button  class="btn btn-default">cómo usar</button>
+				</a>
+			<div class="row text-center">
+
+				<div class="col-xs-6 col-md-4">
+					<div class="alert alert-info pull-left" style="display:none" id="managerLoggedAlert">
+						<strong>Manager</strong> logged.
+					</div>
+					<a href="javascript:void(0);"><div class="alert alert-danger pull-left exitManagerButton" style="display:none" id="ManagerOutTop"> <!--hacer: agregar display:none-->
+						<span class="glyphicon glyphicon-log-out"></span>
+					</div></a>
+				</div>
+
+				<div class="col-xs-6 col-md-4 col-md-offset-4">
+					<div class="alert alert-success pull-right clientDataTop" style="display:none"> <!--hacer: agregar display:none-->
+						<p id="clientPointsTop"></p>
+					</div>
+					<div class="alert alert-info pull-right clientDataTop" style="display:none">
+						<strong id="clientNameTop"></strong>
+					</div>
+				</div>
+
+			</div>
+
+
+		</header>
+
+<!-- ********************SACAR CLASS HIDDEN ******************** -->
+		<div class="container hidden" id="passwordScreen"> <!-- TODO: sacar class hidden -->
+
+			<div class="row text-center">
+
+				<div class="col-xs-12">
+
+					<div id="passDiv">
+
+						<p id="passTxt">Contraseña</p>
+
+						<input type="password" placeholder="Ingrese su contraseña" id="passwordInput">
+
+						<button id="enterPass" class="btn btn btn-primary">ENTER</button>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+<!--**************** agregar class hidden********************** -->
+		<div class="container" id="appScreen"> <!-- TODO: agregar class hidden -->
+
+			<section id="content">
+
+				<ul class="nav nav-tabs">
+
+					<li class="active"><a data-toggle="tab" href="#client">Cliente</a></li>
+
+					<li><a data-toggle="tab" href="#awards" id="awardsTab">Premios</a></li>
+
+					<li><a data-toggle="tab" href="#manager">Manager</a></li>
+
+					<li><a data-toggle="tab" href="#config" style="display: none" id="configTab"><span class="glyphicon glyphicon-cog" id="configSpan"></span></a></li>
+
+				</ul>
+
+				<div class="tab-content">
+
+					<div id="client" class="tab-pane fade in active">
+
+						<div class="container" id="mainScreen">
+
+							<div class="row text-center">
+
+								<div class="col-xs-12" id="inputDiv">
+
+									<p id="textClient">Numero de cliente (sin espacios ni puntos):</p>
+
+									<input type="text" placeholder="Numero de cliente" id="inicialClientIdInput">
+
+								</div>
+
+								<div class="col-xs-12" id="checkboxDiv">
+
+									<label class="checkbox-inline checkText"><input type="checkbox" value="" id="checkboxM">Hombre</label>
+
+									<label class="checkbox-inline checkText"><input type="checkbox" value="" id="checkboxF">Mujer</label>
+
+								</div>
+
+								<div class="col-xs-12">
+
+									<button id="checkClientButton" class="btn btn btn-primary">ENTER</button>
+
+								</div>
+
+							</div>
+
+							<div class="row text-center" id="askCreateScreen" style="display:none">
+
+								<div class="col-xs-12 col-md-4 col-md-offset-4">
+
+									<div id="askCreateContainer" class="text-center">
+
+										<p id="askText"> Cliente no registrado. Desea registrarlo?</p>
+
+										<button id="cancelCreate" class="btn btn-warning"> NO</button>
+
+										<a href="#modalClient" data-toggle="modal">
+											<button id="startCreateButton" class="btn btn-primary">SI, REGISTRAR</button>
+										</a>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+						<div class="container" id="registeredClientScreen" style="display:none">
+
+							<div class="row">
+
+								<div class="col-xs-12 col-md-6 text-center">
+
+									<h3 id="clientName" class="registeredTxtToDelete"></h3>
+
+									<p id=clientBday class="registeredTxtToDelete"></p>
+
+									<h3 id="clientCurrentPoints">Puntos actuales:<br><span id="currentPoints" class="registeredTxtToDelete"></span></h3>
+
+								</div>
+
+
+								<div class="col-xs-12 col-md-6 text-center">
+
+									<div id="newPointsScreen">
+										<p id="textNewBuy">Ingrese el monto de la nueva compra <br> y presione OK</p>
+
+										<input type="text" id="inputNewBuy"><br>
+
+										<button class="btn btn-primary" id="okPoints">OK</button>
+									</div>
+
+									<div id="pointsAddedScreen" style="display:none">
+										<p id="pointsAdeedTxt">Puntos añadidos con exito!</p>
+										<button class="btn btn-primary" id="newBuyBtn">NUEVA COMPRA</button>
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="row text-center">
+
+								<div class="col-xs-12 text-center">
+
+									<p class="jumbotron" id="miscClientText" class="registeredTxtToDelete"></p>
+
+								</div>
+
+							</div>
+
+							<div class="row">
+
+								<div class="col-xs-12 text-center">
+
+									<button class="btn btn-success" id="redeemButton"> CANJEAR PUNTOS</button>
+
+								</div>
+
+							</div>
+
+
+							<div class="row">
+
+								<div class="col-xs-12 text-center">
+
+									<button class="btn btn-primary" id="backToMainButton"> <span class="glyphicon glyphicon-chevron-left"></span> VOLVER</button>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+					</div>
+
+					<div id="awards" class="tab-pane fade">
+
+						<div class="container">
+
+							<h3 id="awardsRowTittle">Aún no hay premios registrados. Puede cargarlos el Manager desde la pestaña de configuración</h3>
+
+							<div class="row"id="awardsRow">
+
+					<!-- ACA RENDERIZAN LOS PREMIOS -->
+
+							</div>
+
+						</div>
+
+					</div>
+
+<!-- ************************* MANAGER TAB ****************************** -->
+
+					<div id="manager" class="tab-pane fade">
+
+						<div class="container" id="managerPasswordScreen">
+
+							<div class="row text-center">
+
+								<div class="col-xs-12">
+
+									<div id="managerPassDiv">
+
+										<p id="managerPassTxt">la contraseña para permisos de administrador es: <strong>manager</strong></p>
+
+										<input type="password" placeholder="Ingrese su contraseña" id="managerPasswordInput">
+
+										<button id="enterManagerPass" class="btn btn btn-primary">ENTER</button>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="container" id="managerLoggedOkScreen" style="display:none">
+
+							<div class="row">
+
+								<div class="col-xs-12">
+									<div id="managerLoggedBox">
+
+										<h3>PERMISOS DE ADMINISTRADOR OTORGADOS</h3>
+
+										<p>Ahora puede acceder a la configuración</p>
+
+										<p>Recuerde salir cuando termine</p>
+
+										<button class="btn btn-primary exitManagerButton">Manager Out <span class="glyphicon glyphicon-log-out"></span></button>
+
+									</div>
+
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+<!-- ************************* MANAGER TAB ****************************** -->
+
+
+<!-- *********************** CONFIG TAB *********************************** -->
+	<div id="config" class="tab-pane fade">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-6">
+
+					<h3>Manager Configuration</h3>
+
+					<a href="#modalAward" data-toggle="modal">
+					<button class="btn btn-primary btn-lg" id="btnCreateAward">CREAR NUEVO PREMIO</button>
+					</a>
+
+					<button class="btn btn-primary exitManagerButton">Manager Out <span class="glyphicon glyphicon-log-out"></span></button>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+			</section>
+
+		</div>
+<!-- *********************** CONFIG TAB *********************************** -->
+
+<!-- *********************** MODAL CLIENT ************************************ -->
+		<section class="modal fade modals" id="modalClient">
+
+			<div class="modal-content modals">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-xs-12">
+
+							<div class="modal-body text-center">
+
+								<p class="textModalClient">
+									Numero de cliente <br> (sin espacios ni puntos):
+								</p>
+								<input type="text" placeholder="Número del cliente" id="idClientInput" class="inputClientModal">
+
+								<p class="textModalClient">
+									Nombre:
+								</p>
+								<input type="text" placeholder="Nombre del cliente" id="nameClientInput" class="inputClientModal">
+
+								<p class="textModalClient">
+									Cumpleaños:
+								</p>
+								<input type="text" placeholder="Fecha de cumpleaños" id="bDayClientInput" class="inputClientModal">
+
+								<p class="textModalClient">
+									Otros(opcional):
+								</p>
+								<textarea rows="7" cols="40" placeholder="Datos varios" id="miscTextClientInput" class="inputClientModal"></textarea>
+
+							</div>
+
+							<div class="text-center">
+
+								<button type="button" class=" btn btn-danger buttonModal " data-dismiss="modal" id="cancelModal"> CANCELAR
+								<span class="glyphicon glyphicon-remove"></span>
+								</button>
+
+								<button type="button" class=" btn btn-success buttonModal " data-dismiss="modal" id="saveClientButton"> REGISTRAR
+								<span class="glyphicon glyphicon-ok"></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+<!-- *********************** MODAL CLIENT ************************************ -->
+
+<!-- ***************** MODAL CREATE AWARD **************************** -->
+		<section class="modal fade modals" id="modalAward">
+
+			<div class="modal-content modals">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-xs-12">
+
+							<div class="modal-body text-center">
+
+								<p class="textModalAward">
+									Nombre del premio:
+								</p>
+								<input type="text" placeholder="Nombre" id="awardNameInput" class="inputAwardModal">
+
+								<p class="textModalAward">
+									Puntos requeridos<br> (números enteros, sin espacios, comas o puntos):
+								</p>
+								<input type="text" placeholder="Puntos" id="awardPointsInput" class="inputAwardModal">
+
+								<p class="textModalAward">
+									Texto <br> (opcional, puede ser alguna descripción o aclaración):
+								</p>
+								<textarea rows="3" cols="40" placeholder="Datos varios" id="awardTextInput" class="inputAwardModal"></textarea>
+
+							</div>
+
+							<div class="text-center">
+
+								<button type="button" class=" btn btn-danger buttonModal " data-dismiss="modal" id="cancelModal"> CANCELAR
+								<span class="glyphicon glyphicon-remove"></span>
+								</button>
+
+								<button type="button" class=" btn btn-success buttonModal " data-dismiss="modal" id="saveAwardButton"> GUARDAR
+								<span class="glyphicon glyphicon-ok"></span>
+								</button>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+<!-- ***************** CREATE MODAL AWARD **************************** -->
+
+
+<!-- ***************** MODAL EDIT AWARD **************************** -->
+		<section class="modal fade modals" id="modalEditAward">
+
+			<div class="modal-content modals">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-xs-12">
+
+							<div class="modal-body text-center">
+
+								<h3 class="textModalAward">EDICIÓN DE PREMIO</h3>
+
+								<p class="textModalAward">
+									Nombre del premio:
+								</p>
+								<input type="text" placeholder="Nombre" id="awardEditNameInput" class="inputAwardEditModal">
+
+								<p class="textModalAward">
+									Puntos requeridos<br> (números enteros, sin espacios, comas o puntos):
+								</p>
+								<input type="text" placeholder="Puntos" id="awardEditPointsInput" class="inputAwardEditModal">
+
+								<p class="textModalAward">
+									Texto <br> (opcional, puede ser alguna descripción o aclaración):
+								</p>
+								<textarea rows="3" cols="40" placeholder="Datos varios" id="awardEditTextInput" class="inputAwardEditModal"></textarea>
+
+							</div>
+
+							<div class="text-center">
+
+								<button type="button" class=" btn btn-danger buttonModal " data-dismiss="modal" id="cancelModal"> CANCELAR
+								<span class="glyphicon glyphicon-remove"></span>
+								</button>
+
+								<button type="button" class=" btn btn-success buttonModal" data-dismiss="modal" id="saveEditionButton"> GUARDAR CAMBIOS
+								<span class="glyphicon glyphicon-ok"></span>
+								</button>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+		<!-- ***************** MODAL EDIT AWARD **************************** -->
+		<!-- ***************** MODAL TUTORIAL **************************** -->
+				<section class="modal fade modals" id="modalTutorial">
+					<div class="modal-content modals">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text-muted well text-left" id="modalTutorialDiv">
+										<p>
+											<strong>1)</strong> Ir a la pestaña <i>Manager</i> e ingresar la clave "manager" para poder tener permisos de administrador y crear premios. <br>
+											<strong>2)</strong> Ir a la pestaña de configuración que apareció al loggearse como manager y crear por lo menos un nuevo premio. <br>
+											<strong>3)</strong> Ir a la pestaña <i>Cliente</i> e ingrear el número de cliente (puede ser cualquier número, un número de documento por ejemplo)<br>
+											<strong>4)</strong> Ya que es la primera vez que se usa, no habrá clientes registrados, por lo que aparecerá un cartel debajo del botón <i>enter</i> preguntando si quieres registrarlo, tocar <i>si,registrar</i> e ingresar los datos.<br>
+											<strong>5)</strong> Ingresar el monto de la compra y clickear <i>ok</i>. Ahora este cliente ya podrá canjear sus puntos si haces click en <i>canjear puntos</i> (aparece bajo la descripción del cliente) lo que llevará a la pestaña de premios, ahí podrás seleccionar únicamente los premios a los que el cliente pueda acceder con la cantidad de puntos que posea en ese momento e indicando cuántos puntos faltan en caso contrario.<br>
+										</p>
+									</div>
+									<div class="text-center">
+										<button type="button" class=" btn btn-default buttonModal " data-dismiss="modal" id="modalTutorialCloseBtn">
+											CERRAR<span class="glyphicon glyphicon-remove"></span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- ***************** MODAL TUTORIAL **************************** -->
+
+
+
+	</body>
+</html>
